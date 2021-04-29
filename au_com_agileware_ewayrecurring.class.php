@@ -770,6 +770,9 @@ class au_com_agileware_ewayrecurring extends CRM_Core_Payment {
         'State' => substr($billingDetails['billing_state_province'],0,50),
         'PostalCode' => substr($billingDetails['billing_postal_code'],0,30),
         'Reference' => 'civi-' . substr($contribution['contact_id'],0,64),
+        'TokenCustomerID' => $eWayCustomer['TokenCustomerID'],
+        'SaveCustomer' => TRUE,
+        'Capture' => FALSE,
         'CustomerReadOnly' => TRUE,
       ];
       $client = CRM_eWAYRecurring_Utils::getEWayClient(CRM_eWAYRecurring_PaymentToken::getPaymentProcessorById($contribution['payment_processor_id']));
